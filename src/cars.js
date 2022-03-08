@@ -5,9 +5,10 @@ exports.createCar = (request, response) => {
         make: request.body.make,
         model: request.body.model,
         photo: request.body.photo,
-        isPosted: false
-        // Need to get id and find a way to add the ratings *************************************
+        description: request.body.description,
+        canDisplay: false,        
     }
+
     const db = connectDB();
     db.collection("cars")
     .add(addCar)
