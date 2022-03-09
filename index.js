@@ -11,13 +11,13 @@ app.use(express.json());
 
 app.get("/users", getUsers)
 app.post("/users",createUser)
-app.post("/users/login", loginUser)
+app.post("/login", loginUser)
 
 app.get("/cars", getCars)
-app.get('/cars/:id', getSingleCar)
-app.post("/cars", createCar)
-app.patch('/cars/:id', updateCars)
-app.delete('/cars/:id', deleteCars)
+app.get("/cars/:id", getSingleCar)
+app.post("/cars", createCar);
+app.patch("/cars/:id", updateCars)
+app.delete("/cars/:id", deleteCars)
 
 
 app.listen(PORT, () => {

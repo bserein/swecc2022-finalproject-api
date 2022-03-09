@@ -90,7 +90,7 @@ exports.getUsers = (request, response) => {
     }
     const decode = jwt.verify(request.headers.authorization, 'ThisIsASecretDontShareShhh')
     console.log('NEW REQUEST BY:', decode.email)
-    if(decode.userRole > 5) { //************************** */
+    if(decode.userRole > 5) { 
         return response.status(401).send({
             success: false,
             message: 'NOT AUTHORIZED'
