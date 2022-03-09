@@ -6,6 +6,12 @@ exports.createCar = (request, response) => {
         model: request.body.model,
         photo: request.body.photo,
         description: request.body.description,
+        topSpeed: request.body.topSpeed,
+        horsepower: request.body.horsepower,
+        msrp: request.body.msrp,
+        mpg: request.body.mpg,
+        fuelCapacity: request.body.fuelCapacity,
+        seatingCapacity: request.body.seatingCapacity,
         canDisplay: false,        
     }
 
