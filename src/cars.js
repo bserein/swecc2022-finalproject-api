@@ -41,7 +41,6 @@ exports.updateCars = (request, response) => {
     const db = connectDB();
     db.collection('cars')
     if (request.body.rating && request.params.id) {
-        console.log('we got here')
       db.collection('cars')
         .doc(request.params.id)
         .get()
