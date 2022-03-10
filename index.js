@@ -11,11 +11,11 @@ app.use(express.json());
 
 app.get("/users", getUsers)
 app.post("/users",createUser)
-app.post("/login", loginUser)
+app.post("/users/login", loginUser)
 
 app.get("/cars", getCars)
 app.get("/cars/:id", getSingleCar)
-app.post("/cars", createCar);
+app.post("/cars/addcar", createCar);
 app.patch("/cars/:id", updateCars)
 app.delete("/cars/:id", deleteCars)
 

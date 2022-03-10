@@ -16,7 +16,7 @@ exports.createCar = (request, response) => {
     }
 
     const db = connectDB();
-    db.collection("cars")
+    db.collection("pending")
     .add(addCar)
     .then((doc) => response.status(201).send(doc.id))
     .catch((err) => response.status(500).send(err))
@@ -40,7 +40,8 @@ exports.getCars = (request, response) => {
 exports.updateCars = (request, response) => {
     const db = connectDB();
     db.collection('cars')
-    if (request.body.rating) {
+    if (request.body.rating && request.params.id) {
+        console.log('we got here')
       db.collection('cars')
         .doc(request.params.id)
         .get()
@@ -60,7 +61,7 @@ exports.updateCars = (request, response) => {
             .doc(request.params.id)
             .update(newRatingObj)
             .then(() => {
-              response.status(200).send(`car ${request.params.id} was updated`)
+              response.status(200).send({message: `car ${request.params.id} was updated`})
             })
         })
         .catch(err => response.status(500).send(err))
@@ -69,7 +70,7 @@ exports.updateCars = (request, response) => {
         .doc(request.params.id)
         .update(request.body)
         .then(() => {
-          this.getCars(request, response)
+          getCars(request, response)
         })
         .catch(err => response.status(500).send(err))
     }
