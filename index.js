@@ -1,7 +1,7 @@
 const express = require('express'); 
 const cors = require('cors'); 
 const { createUser, loginUser, getUsers } = require('./src/authenticatedUsers')
-const { createCar, getCars, deleteCars, updateCars, getSingleCar } = require('./src/cars')
+const { createCar, getCars, deleteCars, updateCars, getSingleCar, getNewCars } = require('./src/cars')
 const PORT = process.env.PORT || 4325
 
 
@@ -15,6 +15,7 @@ app.post("/users/login", loginUser)
 
 app.get("/cars", getCars)
 app.get("/cars/:id", getSingleCar)
+app.get("/cars/addcar", getNewCars)
 app.post("/cars/addcar", createCar);
 app.patch("/cars/:id", updateCars)
 app.delete("/cars/:id", deleteCars)

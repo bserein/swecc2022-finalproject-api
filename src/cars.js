@@ -12,7 +12,6 @@ exports.createCar = (request, response) => {
         mpg: request.body.mpg,
         fuelCapacity: request.body.fuelCapacity,
         seatingCapacity: request.body.seatingCapacity,
-        canDisplay: false,        
     }
 
     const db = connectDB();
@@ -22,6 +21,20 @@ exports.createCar = (request, response) => {
     .catch((err) => response.status(500).send(err))
 }
 
+exports.getNewCars = (request, response) => {
+    const db = connectDB();
+    db.collection("pending")
+    .get()
+    .then((snapshot) => {
+        const newCars = snapshot.docs.map((doc) => {
+            let car = doc.data();
+            car.id = doc.id;
+            return car 
+        })
+        response.send(newCars)
+    })
+    .catch((err) => response.status(500).send(err))
+}
 exports.getCars = (request, response) => {
     const db = connectDB();
     db.collection("cars")
