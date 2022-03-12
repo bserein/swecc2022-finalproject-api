@@ -1,4 +1,5 @@
 const { connectDB } = require("./dbConnect");
+const carsData = require("../carRef.json");
 
 exports.createCar = (request, response) => {
     const addCar = {
@@ -19,7 +20,17 @@ exports.createCar = (request, response) => {
     .add(addCar)
     .then((doc) => response.status(201).send(doc.id))
     .catch((err) => response.status(500).send(err))
+    // for (let i = 0; i < carsData.length; i++) {
+    //     const db = connectDB();
+    //     db.collection("pending")
+    //       .add(carsData[i])
+    //       .then((doc) => {
+    //           console.log(`cars added: ${doc.id}`)
+    //       })
+    //       .catch(err => console.error(err))
+    //   }
 }
+
 
 exports.getNewCars = (request, response) => {
     const db = connectDB();
