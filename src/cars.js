@@ -119,14 +119,3 @@ exports.updateCars = (request, response) => {
       })
       .catch(err => response.status(500).send(err))
   }
-
-  exports.deleteCars = (request, response) => {
-      const db = connectDB();
-    db.collection('cars')
-      .doc(request.params.id)
-      .delete()
-      .then(() => {
-        this.getCars(request, response)
-      })
-      .catch(err => response.status(500).send(err))
-  }
