@@ -13,11 +13,11 @@ app.get("/users", getUsers)
 app.post("/users",createUser)
 app.post("/users/login", loginUser)
 
-app.get("/cars", getCars)
-app.get("/cars/:id", getSingleCar)
-app.get("/cars/addcar", getNewCars)
-app.post("/cars/addcar", createCar);
-app.patch("/cars/:id", updateCars)
+app.get("/", getCars)
+app.get("/:id", getSingleCar)
+app.get("/addcar", getNewCars)
+app.post("/addcar", createCar);
+app.patch("/:id", updateCars)
 
 
 app.listen(PORT, () => {
